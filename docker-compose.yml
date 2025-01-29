@@ -1,0 +1,21 @@
+﻿services:
+  teste.api:
+    image: teste.api
+    build:
+      context: .
+      dockerfile: src/Teste.API/Dockerfile
+    ports:
+      - "5221:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings:DefaultConnection=Host=postgres;Port=5432;Username=postgres;Password=postgres;Database=postgres
+    depends_on:
+      - postgres
+  postgres:
+    image: postgres:13
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    ports:
+      - "5432:5432"

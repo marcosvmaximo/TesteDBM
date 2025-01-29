@@ -1,0 +1,16 @@
+/Users/marcosmaximo/RiderProjects/Teste/src/Teste.Domain/bin/Debug/net8.0/Teste.Domain.deps.json
+/Users/marcosmaximo/RiderProjects/Teste/src/Teste.Domain/bin/Debug/net8.0/Teste.Domain.dll
+/Users/marcosmaximo/RiderProjects/Teste/src/Teste.Domain/bin/Debug/net8.0/Teste.Domain.pdb
+/Users/marcosmaximo/RiderProjects/Teste/src/Teste.Domain/bin/Debug/net8.0/Teste.Core.dll
+/Users/marcosmaximo/RiderProjects/Teste/src/Teste.Domain/bin/Debug/net8.0/Teste.Core.pdb
+/Users/marcosmaximo/RiderProjects/Teste/src/Teste.Domain/obj/Debug/net8.0/Teste.Domain.csproj.AssemblyReference.cache
+/Users/marcosmaximo/RiderProjects/Teste/src/Teste.Domain/obj/Debug/net8.0/Teste.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/marcosmaximo/RiderProjects/Teste/src/Teste.Domain/obj/Debug/net8.0/Teste.Domain.AssemblyInfoInputs.cache
+/Users/marcosmaximo/RiderProjects/Teste/src/Teste.Domain/obj/Debug/net8.0/Teste.Domain.AssemblyInfo.cs
+/Users/marcosmaximo/RiderProjects/Teste/src/Teste.Domain/obj/Debug/net8.0/Teste.Domain.csproj.CoreCompileInputs.cache
+/Users/marcosmaximo/RiderProjects/Teste/src/Teste.Domain/obj/Debug/net8.0/Teste.Domain.sourcelink.json
+/Users/marcosmaximo/RiderProjects/Teste/src/Teste.Domain/obj/Debug/net8.0/Teste.Do.07EECE24.Up2Date
+/Users/marcosmaximo/RiderProjects/Teste/src/Teste.Domain/obj/Debug/net8.0/Teste.Domain.dll
+/Users/marcosmaximo/RiderProjects/Teste/src/Teste.Domain/obj/Debug/net8.0/refint/Teste.Domain.dll
+/Users/marcosmaximo/RiderProjects/Teste/src/Teste.Domain/obj/Debug/net8.0/Teste.Domain.pdb
+/Users/marcosmaximo/RiderProjects/Teste/src/Teste.Domain/obj/Debug/net8.0/ref/Teste.Domain.dll

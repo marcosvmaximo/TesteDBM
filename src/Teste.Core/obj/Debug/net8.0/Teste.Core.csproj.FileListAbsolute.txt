@@ -1,0 +1,12 @@
+/Users/marcosmaximo/RiderProjects/Teste/src/Teste.Core/bin/Debug/net8.0/Teste.Core.deps.json
+/Users/marcosmaximo/RiderProjects/Teste/src/Teste.Core/bin/Debug/net8.0/Teste.Core.dll
+/Users/marcosmaximo/RiderProjects/Teste/src/Teste.Core/bin/Debug/net8.0/Teste.Core.pdb
+/Users/marcosmaximo/RiderProjects/Teste/src/Teste.Core/obj/Debug/net8.0/Teste.Core.GeneratedMSBuildEditorConfig.editorconfig
+/Users/marcosmaximo/RiderProjects/Teste/src/Teste.Core/obj/Debug/net8.0/Teste.Core.AssemblyInfoInputs.cache
+/Users/marcosmaximo/RiderProjects/Teste/src/Teste.Core/obj/Debug/net8.0/Teste.Core.AssemblyInfo.cs
+/Users/marcosmaximo/RiderProjects/Teste/src/Teste.Core/obj/Debug/net8.0/Teste.Core.csproj.CoreCompileInputs.cache
+/Users/marcosmaximo/RiderProjects/Teste/src/Teste.Core/obj/Debug/net8.0/Teste.Core.sourcelink.json
+/Users/marcosmaximo/RiderProjects/Teste/src/Teste.Core/obj/Debug/net8.0/Teste.Core.dll
+/Users/marcosmaximo/RiderProjects/Teste/src/Teste.Core/obj/Debug/net8.0/refint/Teste.Core.dll
+/Users/marcosmaximo/RiderProjects/Teste/src/Teste.Core/obj/Debug/net8.0/Teste.Core.pdb
+/Users/marcosmaximo/RiderProjects/Teste/src/Teste.Core/obj/Debug/net8.0/ref/Teste.Core.dll
