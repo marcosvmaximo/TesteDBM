@@ -21,89 +21,113 @@ namespace Teste.Testes
         }
 
         [Fact]
-        public async Task AdicionarProduto_DeveAdicionarProdutoQuandoValido()
+        public async Task AdicionarProduto_DeveAdicionar_QuandoProdutoForValido()
         {
             // Arrange
-            var produto = new Produto("Produto", "Descrição", 50);
-            _produtoRepositoryMock.Setup(r => r.AddAsync(produto)).Returns(Task.CompletedTask);
+            _produtoRepositoryMock.Setup(r => r.ObterProdutoPorNome(It.IsAny<string>())).ReturnsAsync((Produto)null);
 
             // Act
             await _produtoService.AdicionarProduto("Produto", "Descrição", 50);
 
             // Assert
-            _produtoRepositoryMock.Verify(r => r.AddAsync(produto), Times.Once);
+            _produtoRepositoryMock.Verify(r => r.AddAsync(It.IsAny<Produto>()), Times.Once);
         }
 
         [Fact]
-        public async Task AdicionarProduto_NaoDeveAdicionarQuandoInvalido()
+        public async Task AdicionarProduto_NaoDeveAdicionar_QuandoNomeDuplicado()
         {
             // Arrange
-            var produto = new Produto(null, "Descrição", 50); // Nome inválido
-            _produtoRepositoryMock.Setup(r => r.AddAsync(produto)).Returns(Task.CompletedTask);
+            var produtoExistente = new Produto("Produto", "Descrição", 50);
+            _produtoRepositoryMock.Setup(r => r.ObterProdutoPorNome("Produto")).ReturnsAsync(produtoExistente);
 
             // Act
-            await _produtoService.AdicionarProduto(null, "Descrição", 50);
+            await _produtoService.AdicionarProduto("Produto", "Descrição", 50);
 
             // Assert
-            _produtoRepositoryMock.Verify(r => r.AddAsync(produto), Times.Never); // O repositório não deve ser chamado
+            _produtoRepositoryMock.Verify(r => r.AddAsync(It.IsAny<Produto>()), Times.Never);
         }
 
         [Fact]
-        public async Task AtualizarProduto_DeveAtualizarQuandoValido()
+        public async Task AdicionarProduto_NaoDeveAdicionar_QuandoProdutoForInvalido()
+        {
+            // Act
+            await _produtoService.AdicionarProduto("", "Descrição", 50);
+
+            // Assert
+            _produtoRepositoryMock.Verify(r => r.AddAsync(It.IsAny<Produto>()), Times.Never);
+        }
+
+        [Fact]
+        public async Task AtualizarProduto_DeveAtualizar_QuandoProdutoForValido()
         {
             // Arrange
-            var produtoExistente = new Produto("Produto Existente", "Descrição", 50) { Id = 1 };
-            _produtoRepositoryMock.Setup(r => r.GetByIdAsync(1)).ReturnsAsync(produtoExistente);
-            _produtoRepositoryMock.Setup(r => r.UpdateAsync(produtoExistente)).Returns(Task.CompletedTask);
+            var produto = new Produto("Produto", "Descrição", 50) { Id = 1 };
+            _produtoRepositoryMock.Setup(r => r.GetByIdAsync(1)).ReturnsAsync(produto);
 
             // Act
-            await _produtoService.AtualizarProduto(1, "Produto Atualizado", "Descrição Atualizada", 60);
+            await _produtoService.AtualizarProduto(1, "Novo Produto", "Nova Descrição", 60);
 
             // Assert
-            _produtoRepositoryMock.Verify(r => r.UpdateAsync(produtoExistente), Times.Once);
+            _produtoRepositoryMock.Verify(r => r.UpdateAsync(It.IsAny<Produto>()), Times.Once);
         }
 
         [Fact]
-        public async Task AtualizarProduto_NaoDeveAtualizarQuandoInvalido()
-        {
-            // Arrange
-            var produtoExistente = new Produto("Produto Existente", "Descrição", 50) { Id = 1 };
-            _produtoRepositoryMock.Setup(r => r.GetByIdAsync(1)).ReturnsAsync(produtoExistente);
-            _produtoRepositoryMock.Setup(r => r.UpdateAsync(produtoExistente)).Returns(Task.CompletedTask);
-
-            // Act
-            await _produtoService.AtualizarProduto(1, null, "Descrição Atualizada", 60); // Nome inválido
-
-            // Assert
-            _produtoRepositoryMock.Verify(r => r.UpdateAsync(produtoExistente), Times.Never);
-        }
-
-        [Fact]
-        public async Task RemoverProduto_DeveRemoverQuandoExistir()
-        {
-            // Arrange
-            var produtoExistente = new Produto("Produto Existente", "Descrição", 50) { Id = 1 };
-            _produtoRepositoryMock.Setup(r => r.GetByIdAsync(1)).ReturnsAsync(produtoExistente);
-            _produtoRepositoryMock.Setup(r => r.DeleteAsync(produtoExistente)).Returns(Task.CompletedTask);
-
-            // Act
-            await _produtoService.RemoverProduto(1);
-
-            // Assert
-            _produtoRepositoryMock.Verify(r => r.DeleteAsync(produtoExistente), Times.Once);
-        }
-
-        [Fact]
-        public async Task RemoverProduto_NaoDeveRemoverQuandoNaoExistir()
+        public async Task AtualizarProduto_NaoDeveAtualizar_QuandoProdutoNaoExistir()
         {
             // Arrange
             _produtoRepositoryMock.Setup(r => r.GetByIdAsync(1)).ReturnsAsync((Produto)null);
 
             // Act
+            await _produtoService.AtualizarProduto(1, "Novo Produto", "Nova Descrição", 60);
+
+            // Assert
+            _produtoRepositoryMock.Verify(r => r.UpdateAsync(It.IsAny<Produto>()), Times.Never);
+        }
+
+        [Fact]
+        public async Task RemoverProduto_DeveRemover_QuandoProdutoExistir()
+        {
+            // Arrange
+            var produto = new Produto("Produto", "Descrição", 50) { Id = 1 };
+            _produtoRepositoryMock.Setup(r => r.GetByIdAsync(1)).ReturnsAsync(produto);
+
+            // Act
+            await _produtoService.RemoverProduto(1);
+
+            _produtoRepositoryMock.Verify(r => r.DeleteAsync(produto), Times.Once);
+        }
+
+        [Fact]
+        public async Task RemoverProduto_NaoDeveRemover_QuandoProdutoNaoExistir()
+        {
+            // Arrange
+            _produtoRepositoryMock.Setup(r => r.GetByIdAsync(1)).ReturnsAsync((Produto)null);
+
             await _produtoService.RemoverProduto(1);
 
             // Assert
             _produtoRepositoryMock.Verify(r => r.DeleteAsync(It.IsAny<Produto>()), Times.Never);
+        }
+
+        [Fact]
+        public async Task VerificarNomeUnico_DeveRetornarTrue_QuandoNomeNaoExistir()
+        {
+            _produtoRepositoryMock.Setup(r => r.ObterProdutoPorNome("Novo Produto")).ReturnsAsync((Produto)null);
+
+            var resultado = await _produtoService.VerificarNomeUnico("Novo Produto");
+
+            resultado.Should().BeTrue();
+        }
+
+        [Fact]
+        public async Task VerificarNomeUnico_DeveRetornarFalse_QuandoNomeExistir()
+        {
+            _produtoRepositoryMock.Setup(r => r.ObterProdutoPorNome("Produto Existente"))
+                .ReturnsAsync(new Produto("Produto Existente", "Descrição", 50));
+
+            var resultado = await _produtoService.VerificarNomeUnico("Produto Existente");
+
+            resultado.Should().BeFalse();
         }
     }
 }

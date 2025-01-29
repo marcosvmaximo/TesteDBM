@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "QQMn27+L/3M=",
+  "dgSpecHash": "VQ2AFLWGypxP7A55SgLVX76OhUiLT67K05JmgkTJyKgx3TsWPxrr1Mjj1wrsUvYGNzyYegRIo6b/OQk6uQItSw==",
   "success": true,
-  "projectFilePath": "/Users/marcosmaximo/RiderProjects/Teste/src/Teste.Core/Teste.Core.csproj",
+  "projectFilePath": "/Users/marcosmaximo/RiderProjects/TesteDBM/src/Teste.Core/Teste.Core.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

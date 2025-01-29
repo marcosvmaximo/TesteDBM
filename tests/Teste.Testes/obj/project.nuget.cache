@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "UJGLs7SZyYo=",
+  "dgSpecHash": "6Mcu/gYLnfoNibMGP1huCf21jxsKtIrC209jcJyUEKuJtnFo1McNMmSYy9yR3g74+nD9oBwtKunRz6KJYUs2uA==",
   "success": true,
-  "projectFilePath": "/Users/marcosmaximo/RiderProjects/Teste/tests/Teste.Testes/Teste.Testes.csproj",
+  "projectFilePath": "/Users/marcosmaximo/RiderProjects/TesteDBM/tests/Teste.Testes/Teste.Testes.csproj",
   "expectedPackageFiles": [
     "/Users/marcosmaximo/.nuget/packages/castle.core/5.1.1/castle.core.5.1.1.nupkg.sha512",
     "/Users/marcosmaximo/.nuget/packages/coverlet.collector/6.0.0/coverlet.collector.6.0.0.nupkg.sha512",

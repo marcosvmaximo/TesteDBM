@@ -1,34 +1,27 @@
-﻿# Estágio base
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS base
-WORKDIR /app
-EXPOSE 8080
-EXPOSE 8081
-
-# Estágio de build
+﻿# Etapa 1: Construção
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-ARG BUILD_CONFIGURATION=Release
-WORKDIR /src
-COPY ["src/Teste.API/Teste.API.csproj", "src/Teste.API/"]
-COPY ["src/Teste.Domain/Teste.Domain.csproj", "src/Teste.Domain/"]
-COPY ["src/Teste.Core/Teste.Core.csproj", "src/Teste.Core/"]
-COPY ["src/Teste.Infra/Teste.Infra.csproj", "src/Teste.Infra/"]
-COPY ["src/Teste.Application/Teste.Application.csproj", "src/Teste.Application/"]
-RUN dotnet restore "src/Teste.API/Teste.API.csproj"
-COPY . .
-WORKDIR "/src/src/Teste.API"
-RUN dotnet build "Teste.API.csproj" -c $BUILD_CONFIGURATION -o /app/build
-
-# Publicação da aplicação
-FROM build AS publish
-ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "Teste.API.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
-
-# Estágio final para execução
-FROM base AS final
 WORKDIR /app
-COPY --from=publish /app/publish .
 
-# Rodar migrações antes de iniciar a API
-RUN dotnet ef database update --no-build --connection "Host=postgres;Port=5432;Username=postgres;Password=postgres;Database=postgres"
+# Copia arquivos do projeto e restaura dependências
+COPY *.sln ./
+COPY src/ ./src/
+RUN dotnet restore
 
-ENTRYPOINT ["dotnet", "Teste.API.dll"]
+# Compila a aplicação
+RUN dotnet publish -c Release -o /app/out
+
+# Etapa 2: Runtime
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
+WORKDIR /app
+
+# Copia arquivos compilados para o container final
+COPY --from=build /app/out .
+
+# Expor a porta 8080 para acesso externo
+EXPOSE 8080
+
+# Define variáveis para permitir conexões externas
+ENV ASPNETCORE_URLS=http://+:8080
+
+# Comando para rodar a API
+CMD ["dotnet", "MinhaApi.dll"]

@@ -15,17 +15,15 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-
-// EF
-builder.Services.AddDbContext<DataContext>(options => options.UseNpgsql(connectionString));
+// Database
+builder.Services.AddDbContext<DataContext>(options => options.UseInMemoryDatabase("TesteDb"));
 
 
 // Fluent Migrations
 builder.Services.AddFluentMigratorCore()
     .ConfigureRunner(runner => runner
         .AddPostgres()
-        .WithGlobalConnectionString(connectionString)
+        .WithGlobalConnectionString("TesteDb")
         .ScanIn(typeof(First).Assembly).For.Migrations()
     )
     .AddLogging(lb => lb.AddConsole());
@@ -37,19 +35,16 @@ builder.Services.AddDependencyInjection();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 app.MapControllers();
 
 // Migração
-using (var scope = app.Services.CreateScope())
-{
-    var runner = scope.ServiceProvider.GetRequiredService<IMigrationRunner>();
-    // runner.MigrateUp();
-}
+// using (var scope = app.Services.CreateScope())
+// {
+//     var runner = scope.ServiceProvider.GetRequiredService<IMigrationRunner>();
+//     runner.MigrateUp();
+// }
 app.Run();

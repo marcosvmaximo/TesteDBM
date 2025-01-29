@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jFz1kd2k+Dxhkk0F5oDXcJuIAaI8hgpNYkgYpG/EF6/jRlOpk954/RYcjXJRxoiqKXmnQWeeWBhlk76Bkbiywg==",
+  "dgSpecHash": "JRXNlf68xhQbX4IVwHhXWXuX/NJS866yh3+mp+FmdwQcpmpAggJln1bJgj9dxKU5Xrq2SjS5YLFDXPhhhmOZ+w==",
   "success": true,
-  "projectFilePath": "/Users/marcosmaximo/RiderProjects/Teste/src/Teste.Infra/Teste.Infra.csproj",
+  "projectFilePath": "/Users/marcosmaximo/RiderProjects/TesteDBM/src/Teste.Infra/Teste.Infra.csproj",
   "expectedPackageFiles": [
     "/Users/marcosmaximo/.nuget/packages/azure.core/1.38.0/azure.core.1.38.0.nupkg.sha512",
     "/Users/marcosmaximo/.nuget/packages/azure.identity/1.11.4/azure.identity.1.11.4.nupkg.sha512",

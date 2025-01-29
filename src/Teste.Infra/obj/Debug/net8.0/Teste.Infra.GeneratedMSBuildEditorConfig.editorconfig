@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Teste.Infra
-build_property.ProjectDir = /Users/marcosmaximo/RiderProjects/Teste/src/Teste.Infra/
+build_property.ProjectDir = /Users/marcosmaximo/RiderProjects/TesteDBM/src/Teste.Infra/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

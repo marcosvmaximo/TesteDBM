@@ -1,4 +1,4 @@
-using FluentAssertions;
+using FluentValidation.TestHelper;
 using Moq;
 using Teste.Application;
 using Teste.Domain;
@@ -9,65 +9,52 @@ namespace Teste.Testes
     public class ProdutoValidatorTests
     {
         private readonly ProdutoValidator _validator;
-        private readonly Mock<IProdutoService> _produtoServiceMock;
+        private readonly Mock<IProdutoRepository> _produtoRepositoryMock;
 
         public ProdutoValidatorTests()
         {
-            _produtoServiceMock = new Mock<IProdutoService>();
+            _produtoRepositoryMock = new Mock<IProdutoRepository>();
             _validator = new ProdutoValidator();
         }
 
         [Fact]
-        public void Nome_DeveSerObrigatorio()
+        public async Task Nome_DeveSerObrigatorio()
         {
-            // Arrange
-            var produto = new Produto(null, "Descrição", 50);
-
-            // Act
-            var resultado = _validator.Validate(produto);
-
-            // Assert
-            resultado.IsValid.Should().BeFalse();
+            var produto = new Produto("", "Descrição válida", 50);
+            var resultado = await _validator.TestValidateAsync(produto);
+            resultado.ShouldHaveValidationErrorFor(p => p.Nome);
         }
 
         [Fact]
-        public async Task Nome_DeveSerUnico()
+        public async Task Nome_NaoDeveUltrapassar100Caracteres()
         {
-            // Arrange
-            var produto = new Produto("Produto Existente", "Descrição", 50);
-            _produtoServiceMock.Setup(x => x.VerificarNomeUnico(produto.Nome)).ReturnsAsync(true); // Nome duplicado
-
-            // Act
-            var resultado = await _validator.ValidateAsync(produto);
-
-            // Assert
-            resultado.IsValid.Should().BeFalse();
+            var produto = new Produto(new string('A', 101), "Descrição válida", 50);
+            var resultado = await _validator.TestValidateAsync(produto);
+            resultado.ShouldHaveValidationErrorFor(p => p.Nome);
         }
 
         [Fact]
-        public void Preco_DeveSerMaiorQueZero()
+        public async Task Preco_DeveSerMaiorQueZero()
         {
-            // Arrange
-            var produto = new Produto("Produto", "Descrição", -1);
-
-            // Act
-            var resultado = _validator.Validate(produto);
-
-            // Assert
-            resultado.IsValid.Should().BeFalse();
+            var produto = new Produto("Produto", "Descrição válida", 0);
+            var resultado = await _validator.TestValidateAsync(produto);
+            resultado.ShouldHaveValidationErrorFor(p => p.Preco);
         }
 
         [Fact]
-        public void Descricao_DeveTerNoMaximo255Caracteres()
+        public async Task Preco_NaoPodeSerNulo()
         {
-            // Arrange
-            var produto = new Produto("Produto", new string('a', 256), 50);
+            var produto = new Produto("Produto", "Descrição válida", default);
+            var resultado = await _validator.TestValidateAsync(produto);
+            resultado.ShouldHaveValidationErrorFor(p => p.Preco);
+        }
 
-            // Act
-            var resultado = _validator.Validate(produto);
-
-            // Assert
-            resultado.IsValid.Should().BeFalse();
+        [Fact]
+        public async Task Descricao_NaoDeveUltrapassar255Caracteres()
+        {
+            var produto = new Produto("Produto", new string('A', 256), 50);
+            var resultado = await _validator.TestValidateAsync(produto);
+            resultado.ShouldHaveValidationErrorFor(p => p.Descricao);
         }
     }
 }

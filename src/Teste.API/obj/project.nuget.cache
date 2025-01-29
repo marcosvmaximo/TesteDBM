@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "CMI+jLlUPTeon1NCkPcmhSGovbTBaEEhJXeGYizBOfOLTXbLsdp1fkP6JuMlGvtSnWvDg7c5k8m0CtdIKZnhkw==",
+  "dgSpecHash": "QfSzH5wFrUz0is3MVgpW9h6LEH6J771fy79Sk3hLP0+OFhc7QXyC6q3I3qaeEfGhhHjlH4kC6HKHbWEcO/315w==",
   "success": true,
-  "projectFilePath": "/Users/marcosmaximo/RiderProjects/Teste/src/Teste.API/Teste.API.csproj",
+  "projectFilePath": "/Users/marcosmaximo/RiderProjects/TesteDBM/src/Teste.API/Teste.API.csproj",
   "expectedPackageFiles": [
     "/Users/marcosmaximo/.nuget/packages/azure.core/1.38.0/azure.core.1.38.0.nupkg.sha512",
     "/Users/marcosmaximo/.nuget/packages/azure.identity/1.11.4/azure.identity.1.11.4.nupkg.sha512",
@@ -35,6 +35,7 @@
     "/Users/marcosmaximo/.nuget/packages/microsoft.entityframeworkcore/8.0.12/microsoft.entityframeworkcore.8.0.12.nupkg.sha512",
     "/Users/marcosmaximo/.nuget/packages/microsoft.entityframeworkcore.abstractions/8.0.12/microsoft.entityframeworkcore.abstractions.8.0.12.nupkg.sha512",
     "/Users/marcosmaximo/.nuget/packages/microsoft.entityframeworkcore.analyzers/8.0.12/microsoft.entityframeworkcore.analyzers.8.0.12.nupkg.sha512",
+    "/Users/marcosmaximo/.nuget/packages/microsoft.entityframeworkcore.inmemory/8.0.12/microsoft.entityframeworkcore.inmemory.8.0.12.nupkg.sha512",
     "/Users/marcosmaximo/.nuget/packages/microsoft.entityframeworkcore.relational/8.0.12/microsoft.entityframeworkcore.relational.8.0.12.nupkg.sha512",
     "/Users/marcosmaximo/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "/Users/marcosmaximo/.nuget/packages/microsoft.extensions.caching.abstractions/8.0.0/microsoft.extensions.caching.abstractions.8.0.0.nupkg.sha512",

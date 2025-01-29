@@ -32,11 +32,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/marcosmaximo/RiderProjects/Teste/src/Teste.Domain/Teste.Domain.csproj",
+      "projectUniqueName": "/Users/marcosmaximo/RiderProjects/TesteDBM/src/Teste.Domain/Teste.Domain.csproj",
       "projectName": "Teste.Domain",
-      "projectPath": "/Users/marcosmaximo/RiderProjects/Teste/src/Teste.Domain/Teste.Domain.csproj",
+      "projectPath": "/Users/marcosmaximo/RiderProjects/TesteDBM/src/Teste.Domain/Teste.Domain.csproj",
       "packagesPath": "/Users/marcosmaximo/.nuget/packages/",
-      "outputPath": "/Users/marcosmaximo/RiderProjects/Teste/src/Teste.Domain/obj/",
+      "outputPath": "/Users/marcosmaximo/RiderProjects/TesteDBM/src/Teste.Domain/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/marcosmaximo/.nuget/NuGet/NuGet.Config"
@@ -51,8 +51,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "/Users/marcosmaximo/RiderProjects/Teste/src/Teste.Core/Teste.Core.csproj": {
-              "projectPath": "/Users/marcosmaximo/RiderProjects/Teste/src/Teste.Core/Teste.Core.csproj"
+            "/Users/marcosmaximo/RiderProjects/TesteDBM/src/Teste.Core/Teste.Core.csproj": {
+              "projectPath": "/Users/marcosmaximo/RiderProjects/TesteDBM/src/Teste.Core/Teste.Core.csproj"
             }
           }
         }
@@ -61,11 +61,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
