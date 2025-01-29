@@ -37,7 +37,7 @@ Utilizando o Swagger:
 ### Utilizar a Imagem do Docker Hub  
 ```sh
  docker pull marcosvmaximo/teste-api
- docker run -p 8080:8080 seu-usuario/teste-api:latest
+ docker run -p 8080:8080 marcosvmaximo/teste-api
 ```
 A API estará acessível em:  
 **http://localhost:8080**
