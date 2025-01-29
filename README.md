@@ -1,83 +1,92 @@
-# Teste.API
+# Descrição do Projeto
+API para o teste da DBM, utilizando **.NET 8**, **Docker** e **banco de dados em memória**.
 
-## Descrição do Projeto
-API para o teste da DBM, utilizando .NET 8, docker, e banco de dados em memória
+---
 
 ## Configuração e Execução
 
-### 1. Clone o Repositório
-```bash
-git clone https://github.com/seu-usuario/teste-api.git
-cd teste-api
+### **1. Clone o Repositório**  
+```sh
+ git clone https://github.com/seu-usuario/teste-api.git
+ cd teste-api
 ```
 
-### 2. Configure o Banco de Dados
-Rodando localmente ou via Docker:
-```bash
-docker run --name postgres -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=teste -p 5432:5432 -d postgres:13
+### **2. Executando a API**
+
+#### **Rodando Localmente**  
+```sh
+ dotnet restore
+ dotnet build
+ dotnet run --project src/Teste.API/Teste.API.csproj
 ```
+A API estará disponível em:  
+**`http://localhost:8080`**
 
-
-### 3. Configure a String de Conexão
-Edite `appsettings.Development.json`:
-```json
-"ConnectionStrings": {
-  "DefaultConnection": "Host=localhost;Port=5432;Username=postgres;Password=postgres;Database=teste"
-}
-```
-
-### 4. Rode a API
-```bash
-dotnet restore
-dotnet build
-dotnet run --project src/Teste.API/Teste.API.csproj
-```
-
-API em `http://localhost:8080`
-
+---
 
 ## Execução com Docker
 
-### 1. Criar Imagem
-```bash
-docker build -t teste-api .
+### **1. Criar a Imagem Docker**  
+```sh
+ docker build -t teste-api .
 ```
 
-### 2. Rodar com Docker Compose
-```bash
-docker-compose up --build
+### **2. Rodar com Docker Compose**  
+```sh
+ docker-compose up --build
+```
+A API estará acessível em:  
+**`http://localhost:8080`**
+
+### **3. Baixar Imagem do DockerHub**  
+```sh
+ docker pull seu-usuario/teste-api:latest
+ docker run -p 8080:8080 seu-usuario/teste-api:latest
 ```
 
-API: `http://localhost:5221` | Banco: `localhost:5432`
-
-
-### 3. Baixar Imagem do DockerHub
-```bash
-docker pull seu-usuario/teste-api:latest
-docker run -p 8080:80 seu-usuario/teste-api:latest
+### **4. Parar Containers**  
+```sh
+ docker-compose down
 ```
 
-### Parar Containers
-```bash
-docker-compose down
+---
+
+## Configuração do Banco de Dados
+A API já está configurada para usar um **banco de dados em memória**, então **não é necessário configurar um banco externo**, no qual está pré-configurado, para utilizar o postgresql, junto ao FluentMigrator para gerar as tabelas na inicialização.
+
+No **`Program.cs`**, o banco está definido como **InMemory**:
+```csharp
+using Microsoft.EntityFrameworkCore;
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseInMemoryDatabase("MinhaMemoriaDB"));
+
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+var app = builder.Build();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
+app.UseAuthorization();
+app.MapControllers();
+app.Run();
 ```
 
-## Rodando Testes
+---
 
-```bash
-dotnet test
+## Executando Testes
+```sh
+ dotnet test
 ```
 
-## Executando Migrações
-
-```bash
-dotnet ef database update
-```
-
-Para criar uma nova:
-```bash
-dotnet ef migrations add NomeDaMigracao
-```
 
 # Documentação
 
