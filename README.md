@@ -29,9 +29,14 @@ Utilizando o Swagger:
 
 ## Execução com Docker
 
+### Faça login no Docker
+```sh
+ docker login
+```
+
 ### Utilizar a Imagem do Docker Hub  
 ```sh
- docker pull seu-usuario/teste-api:latest
+ docker pull marcosvmaximo/teste-api
  docker run -p 8080:8080 seu-usuario/teste-api:latest
 ```
 A API estará acessível em:  
