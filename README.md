@@ -24,6 +24,7 @@ A API estará disponível em:
 
 Utilizando o Swagger:
 **http://localhost:8080/swagger/index.html**
+
 ---
 
 ## Execução com Docker
