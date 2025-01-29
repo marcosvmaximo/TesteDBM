@@ -22,6 +22,8 @@ API para o teste da DBM, utilizando **.NET 8**, **Docker** e **banco de dados em
 A API estará disponível em:  
 **http://localhost:8080**
 
+Utilizando o Swagger:
+**http://localhost:8080/swagger/index.html**
 ---
 
 ## Execução com Docker
@@ -33,6 +35,9 @@ A API estará disponível em:
 ```
 A API estará acessível em:  
 **http://localhost:8080**
+
+Utilizando o Swagger:
+**http://localhost:8080/swagger/index.html**
 
 ### Parar Containers  
 ```sh
