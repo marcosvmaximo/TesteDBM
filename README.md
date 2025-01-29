@@ -90,9 +90,6 @@ app.Run();
 
 # Documentação
 
-Como usar o inMemoryDatabase para meu projeto
-# Documentação da Teste.API
-
 ## 1. Estrutura do Projeto
 Opetei por utilizar uma arquitetura de 4 camadas, seguindo alguns conceitos de DDD.
 
@@ -132,11 +129,11 @@ Contém implementações de Repositories que acessam o banco usando Entity Frame
 A stack principal do projeto inclui:
 
 - **.NET 8**:
-- **InMemoryDatabase**: Banco de dados de teste
+- **InMemoryDatabase**: Banco de dados de teste.
 - **Entity Framework Core**
 - **Docker**
 - **Arquitetura em Camadas**
-- **Repository Pattern
+- **Repository Pattern**
 
 ## 4. Desafios Encontrados e Soluções
 
@@ -156,6 +153,3 @@ Os testes são executados com:
 ```bash
 dotnet test
 ```
-
-
-
