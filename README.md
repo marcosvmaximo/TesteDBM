@@ -51,6 +51,14 @@ A API estará acessível em:
 
 ---
 
+## Utilizar a API
+
+Você pode consumir a API através da ferramente **Postman** ou através do **Swagger**, utilizando o link: 
+ 
+**`http://localhost:8080/swagger/index.html`**
+
+---
+
 ## Configuração do Banco de Dados
 A API já está configurada para usar um **banco de dados em memória**, então **não é necessário configurar um banco externo**, no qual está pré-configurado, para utilizar o postgresql, junto ao FluentMigrator para gerar as tabelas na inicialização.
 
