@@ -5,64 +5,47 @@ API para o teste da DBM, utilizando **.NET 8**, **Docker** e **banco de dados em
 
 ## Configuração e Execução
 
-### **1. Clone o Repositório**  
+### Clone o Repositório  
 ```sh
  git clone https://github.com/seu-usuario/teste-api.git
  cd teste-api
 ```
 
-### **2. Executando a API**
+### Executando a API
 
-#### **Rodando Localmente**  
+#### Rodando Localmente  
 ```sh
  dotnet restore
  dotnet build
  dotnet run --project src/Teste.API/Teste.API.csproj
 ```
 A API estará disponível em:  
-**`http://localhost:8080`**
+**http://localhost:8080**
 
 ---
 
 ## Execução com Docker
 
-### **1. Criar a Imagem Docker**  
-```sh
- docker build -t teste-api .
-```
-
-### **2. Rodar com Docker Compose**  
-```sh
- docker-compose up --build
-```
-A API estará acessível em:  
-**`http://localhost:8080`**
-
-### **3. Baixar Imagem do DockerHub**  
+### Utilizar a Imagem do Docker Hub  
 ```sh
  docker pull seu-usuario/teste-api:latest
  docker run -p 8080:8080 seu-usuario/teste-api:latest
 ```
+A API estará acessível em:  
+**http://localhost:8080**
 
-### **4. Parar Containers**  
+### Parar Containers  
 ```sh
- docker-compose down
+ docker stop $(docker ps -q)
+ docker rm $(docker ps -aq)
 ```
 
 ---
 
-## Utilizar a API
-
-Você pode consumir a API através da ferramente **Postman** ou através do **Swagger**, utilizando o link: 
- 
-**`http://localhost:8080/swagger/index.html`**
-
----
-
 ## Configuração do Banco de Dados
-A API já está configurada para usar um **banco de dados em memória**, então **não é necessário configurar um banco externo**, no qual está pré-configurado, para utilizar o postgresql, junto ao FluentMigrator para gerar as tabelas na inicialização.
+A API já está configurada para usar um **banco de dados em memória**, então não é necessário configurar um banco externo, porém está pre programado para rodar utilizando o Postgresql.
 
-No **`Program.cs`**, o banco está definido como **InMemory**:
+No `Program.cs`, o banco está definido como InMemory:
 ```csharp
 using Microsoft.EntityFrameworkCore;
 
@@ -94,7 +77,6 @@ app.Run();
 ```sh
  dotnet test
 ```
-
 
 # Documentação
 
